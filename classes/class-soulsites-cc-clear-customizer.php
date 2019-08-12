@@ -18,6 +18,12 @@ if( !class_exists( 'SoulSites_CC_Clear_Customizer' ) ){
          * Filters out the core WP_Customizer sections so their functionality isn't available to the user in the Customizer
          **/
         public static function remove_core_customizer_elements($core_sections, $wp_customizer){
+
+            // don't remove the sections if the user is a superadmin
+            if(current_user_can('setup_network')){
+                return $core_sections;
+            }
+            
             return array();
         }
 
@@ -25,6 +31,11 @@ if( !class_exists( 'SoulSites_CC_Clear_Customizer' ) ){
          * Removes all sections and panels from the WP_Customizer that haven't been whitelisted
          **/
         public static function clear_the_customizer($wp_customizer){
+
+            // don't remove the sections if the user is a superadmin
+            if(current_user_can('setup_network')){
+                return;
+            }
 
             // exclude the default customizer items and the Soul™ brand control elements
             $exceptions = array('widgets', 'nav_menus', 'soultype2-control-panel', 'soultype2-font-presets');
