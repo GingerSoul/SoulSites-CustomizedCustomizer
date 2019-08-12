@@ -1,0 +1,84 @@
+.localnav-dest hr{
+    float:right;
+}
+
+.localnav-dest h3{
+    clear:both;
+}
+
+.fl-page *{
+    background: var(--primary-color);
+    color: var(--secondary-color);
+}
+
+html .scrolled {
+    background:var(--primary-color);
+}
+
+html{
+    overflow-y: auto;
+}
+
+p{
+    opacity: .75;
+}
+
+.sidebar a, .sidebar hr{
+    opacity: .4!important;
+}
+
+html, body, .fl-page-content, .oncanvas .ss-subsection{
+    background:var(--primary-color);
+}
+
+.fl-page *{
+    color:var(--secondary-color);
+}
+
+::selection { 
+    background:var(--secondary-color);
+    color:var(--primary-color);
+}
+
+a.soulbutton, a.edd-add-to-cart {
+    padding: .5rem 1rem;
+    background: var(--secondary-color);
+    color: var(--primary-color);
+    display: inline-block;
+    font-weight:600!important;
+        border: none;
+    border-radius: 0px;
+
+}
+
+span.edd-add-to-cart-label {
+    color: var(--primary-color);
+}
+
+
+hr {
+    height: 3px!important;
+    background:var(--secondary-color);
+    border: none!important;
+    margin:1rem 0;
+}
+
+.sticky{
+    /*position: -webkit-sticky;*/
+    /*position: sticky;*/
+    /*top:0rem;*/
+}
+
+.stuck {
+  position:fixed;
+  top:0;
+}
+
+.stayput {
+    position: absolute;
+    bottom: 0;
+}
+
+.notinbuilder .gridholder{
+    display:none;
+}
