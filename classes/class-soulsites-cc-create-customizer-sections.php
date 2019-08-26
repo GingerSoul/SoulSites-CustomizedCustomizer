@@ -132,7 +132,7 @@ if(!class_exists('SoulSites_CC_Create_Customizer_Sections')){
             $wp_customizer->add_setting(
                 'soulsites_available_font_presets',
                 array(
-                    'default'           => '',
+                    'default'           => 'default',
                     'type'              => 'option',
                     'capability'        => 'edit_theme_options',
                     'sanitize_callback' => 'sanitize_text_field',
@@ -150,11 +150,12 @@ if(!class_exists('SoulSites_CC_Create_Customizer_Sections')){
                     'type'        => 'select',
                     'choices'     => array(
                         // todo fill out the options with valid font combinations
-                        'off_white_paper' => __('Modern, Neutral', 'soulsites-cc'),
-                        'black_and_white' => __('Eccentric, Classic', 'soulsites-cc'),
-                        'sunday_paper'    => __('Minimal, Neutral', 'soulsites-cc'),
-                        'red_and_green'   => __('Conventional, Simple', 'soulsites-cc'),
-                        'custom'          => __('Reading, Blog', 'soulsites-cc'),
+                        'default'           => __('Chronicler', 'soulsites-cc'),
+                        'off_white_paper'   => __('Modern, Neutral', 'soulsites-cc'),
+                        'black_and_white'   => __('Eccentric, Classic', 'soulsites-cc'),
+                        'sunday_paper'      => __('Minimal, Neutral', 'soulsites-cc'),
+                        'red_and_green'     => __('Conventional, Simple', 'soulsites-cc'),
+                        'custom'            => __('Reading, Blog', 'soulsites-cc'),
                     ),
                 )
             );

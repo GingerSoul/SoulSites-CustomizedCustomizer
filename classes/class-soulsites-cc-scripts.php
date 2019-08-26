@@ -8,7 +8,7 @@ if(!class_exists('SoulSites_CC_Scripts')){
         }
         
         public static function load_hooks(){
-            add_action('wp_enqueue_scripts', array(__CLASS__, 'enqueue_soulsites_cc_styles'));
+            add_action('wp_enqueue_scripts', array(__CLASS__, 'enqueue_soulsites_cc_styles'), 100);
             add_action('wp_enqueue_scripts', array(__CLASS__, 'output_soulsites_cc_color_css_variables'), 100);
             add_action('wp_enqueue_scripts', array(__CLASS__, 'output_soulsites_cc_font_css_variables'), 100);
             
@@ -20,7 +20,7 @@ if(!class_exists('SoulSites_CC_Scripts')){
             wp_enqueue_style('soulsites-customized-customizer-styles', SOULSITES_CC_URL_PATH . 'assets/css/soulsites-customized-customizer-styles.css');
             // todo it would probably be a good idea to merge the stylesheets when they start getting bigger and more numerous
             // enqueue the font's stylesheet
-            wp_enqueue_style('soulsites-customized-customizer-styles', SOULSITES_CC_URL_PATH . 'assets/css/soulsites-customized-customizer-font-styles.css');
+            wp_enqueue_style('soulsites-customized-customizer-font-styles', SOULSITES_CC_URL_PATH . 'assets/css/soulsites-customized-customizer-font-styles.css');
         }
 
         /**
@@ -70,22 +70,23 @@ if(!class_exists('SoulSites_CC_Scripts')){
          **/
         public static function output_soulsites_cc_font_css_variables(){
             // create the list of available color presets
-            $available_presets = array( /*'off_white_paper' => array('primary' => '#fdfbf1', 'secondary' => '#2C170B'), //primary == the background/body color, secondary == the text color
+            $available_presets = array( 'default' => array('primary' => '"Chronicle SSm A", "Chronicle SSm B", serif', 'secondary' => '"Sentinel A", "Sentinel B", serif', 'extra' => '"Sentinel A", "Sentinel B", serif'),
+                                        /*'off_white_paper' => array('primary' => '#fdfbf1', 'secondary' => '#2C170B'), //primary == the background/body color, secondary == the text color
                                         'black_and_white' => array('primary' => '#ffffff', 'secondary' => '#000000'),
                                         'sunday_paper'    => array('primary' => '#F7FAFC', 'secondary' => '#1A202C'),
                                         'red_and_green'   => array('primary' => '#ff0000', 'secondary' => '#27ff00')*/
             );
 
             // get the user's selected color options
-            $font_set = get_option('soulsites_available_font_presets', '');
+            $font_set = get_option('soulsites_available_font_presets', 'default');
             
-            // if the user has selected a custom color scheme
+            // if the user has selected a custom font scheme
 /*            if($color_set === 'custom'){
                 // load the custom colors
 //                $primary    = get_option('soulsites_custom_site_primary_color', '#ffffff');
 //                $secondary  = get_option('soulsites_custom_site_secondary_color', '#000000');
             }else*/if(isset($available_presets[$font_set])){
-                // if the user has selected from our list of preset colors, apply the preset
+                // if the user has selected from our list of preset fonts, apply the preset
                 $primary    = $available_presets[$font_set]['primary'];
                 $secondary  = $available_presets[$font_set]['secondary'];
                 $extra      = $available_presets[$font_set]['extra'];
@@ -94,6 +95,10 @@ if(!class_exists('SoulSites_CC_Scripts')){
                 $primary    = '"Chronicle SSm A", "Chronicle SSm B", serif';
                 $secondary  = '"Sentinel A", "Sentinel B", serif';
                 $extra      = '"Sentinel A", "Sentinel B", serif';
+                //todo remove later, just here for contrast
+                $primary    = 'cursive';
+                $secondary  = 'cursive';
+                $extra      = 'cursive';
             }
 
             // output the relavent font family source link and the font CSS variables based on the user's input
