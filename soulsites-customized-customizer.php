@@ -5,7 +5,7 @@
  * Description: A plugin that removes the inputs from the WordPress customizer and replaces them with a number of custom inputs specifically designed for use on SoulSites
  * Author:		Soul Plugins
  * Author URI:	URI: https://soulplugins.co
- * Version:		1.0
+ * Version:		1.1
  * Text Domain: soulsites-cc
  * Domain Path: /assets/lang/
  */
@@ -31,9 +31,10 @@ if( !class_exists( 'SoulSites_Customized_Customizer' ) ){
             require(SOULSITES_CC_PATH . 'classes/class-soulsites-cc-scripts.php');
         }
     }
-    
-    new SoulSites_Customized_Customizer;
-    
+
+    add_action('plugins_loaded', function(){
+        new SoulSites_Customized_Customizer;
+    }, 999);
 }
 
 

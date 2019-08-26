@@ -1,0 +1,206 @@
+/* SOUL SITES CSS TEMPLATE */
+/*
+:root { 
+	--primary-typeface: "Chronicle SSm A", "Chronicle SSm B", serif !important;
+	--secondary-typeface: "Sentinel A", "Sentinel B", serif !important;
+	--extra-typeface: "Sentinel A", "Sentinel B", serif !important;
+	}
+*/
+
+html, body { 
+	font-size:12px !important; 
+	line-height:1.5 !important; 
+	font-family:var(--primary-typeface);
+} 	
+
+.display-2 { 
+	font-size:4.3rem !important; 
+	line-height:1.1 !important; 
+	margin:0 0 1.125rem !important; 
+	font-family:var(--secondary-typeface); 
+} 
+
+ .display-3 {
+     font-size:3.583rem !important;
+     line-height:1.1 !important;
+     margin:0 0 1.125rem !important;
+     font-family:var(--secondary-typeface);
+}
+
+ .display-4 {
+     font-size:2.986rem !important;
+     line-height:1.1 !important;
+     margin:0 0 1.125rem !important;
+     font-family:var(--secondary-typeface);
+}
+
+h1, .h1 {
+     font-size:2.488rem !important;
+     font-weight:600 !important;
+     line-height:1.2 !important;
+     margin:0 0 1.2375rem !important;
+     font-family:var(--secondary-typeface);
+}
+
+h2, .h2 {
+     font-size:2.074rem !important;
+     font-weight:600 !important;
+     line-height:1.2 !important;
+     margin:0 0 1rem !important;
+     font-family:var(--secondary-typeface);
+}
+
+h3, .h3 {
+     font-size:1.728rem !important;
+     font-weight:600 !important;
+     line-height:1.2 !important;
+     margin:0 0 1rem !important;
+     font-family:var(--secondary-typeface);
+}
+
+ h4, .h4 {
+     font-size:1.44rem !important;
+     font-weight:600 !important;
+     line-height:1.4 !important;
+     margin:0 0 1rem !important;
+     font-family:var(--secondary-typeface);
+}
+
+ .soulbuttons, button, .edd-add-to-cart-label {
+     font-size:1rem !important;
+     font-weight:600 !important;
+     font-family:var(--secondary-typeface);
+}
+
+ p {
+     font-size:1.2rem !important;
+     font-weight:300 !important;
+     line-height:1.5 !important;
+     margin:0 0 1.5rem !important;
+     font-family:var(--primary-typeface);
+}
+
+ p > div {
+     font-size:1.2rem !important;
+     font-weight:400 !important;
+     line-height:1.5 !important;
+     font-family:var(--primary-typeface);
+}
+
+ .soulmenu a {
+     font-size:1.2rem !important;
+     font-weight:600 !important;
+     font-family:var(--secondary-typeface);
+}
+
+ h5, .h5 {
+     font-size:1.1rem !important;
+     font-weight:300 !important;
+     margin:0 0 1rem !important;
+     font-family:var(--primary-typeface);
+}
+
+ .tinycopy, div.tinycopy p, .soulbutton {
+     font-size:1.1rem !important;
+     font-weight:400 !important;
+     line-height:1.6 !important;
+     margin:0 0 1.8rem !important;
+}
+
+ .tinycopy > div {
+     font-size:1.1rem !important;
+     font-weight:400 !important;
+     line-height:1.6 !important;
+     font-family:var(--primary-typeface);
+}
+
+
+@media (min-width: 768px) { 
+	.display-2 { 
+		font-size:5.96rem !important; 
+	} 
+    
+    .display-3 {
+         font-size:4.768rem !important;
+    }
+    
+     .display-4 {
+         font-size:3.815rem !important;
+    }
+    
+    h1, .h1 {
+         font-size:3.052rem !important;
+    }
+    
+    h2, .h2 {
+         font-size:2.441rem !important;
+    }
+    
+    h3, .h3 {
+         font-size:1.953rem !important;
+    }
+     h4, .h4 {
+         font-size:1.563rem !important;
+    }
+     p {
+         font-size:1.25rem !important;
+    }
+     p > div {
+         font-size:1.25rem !important;
+    }
+
+     .soulmenu a {
+         font-size:1.25rem !important;
+    }
+    
+}
+
+@media (min-width: 992px) { 
+	html, body { 
+		font-size:14px !important; 
+	} 
+	
+	.display-2 { 
+		font-size:9.969rem !important; 
+		margin:0 0 1.2rem !important; 
+	}
+	
+	.display-3 {
+         font-size:7.478rem !important;
+         margin:0 0 1.2rem !important;
+    }
+    
+     .display-4 {
+         font-size:5.61rem !important;
+         margin:0 0 1.2rem !important;
+    }
+     h1, .h1 {
+         font-size:4.209rem !important;
+         margin:0 0 1.32rem !important;
+    }
+     h2, .h2 {
+         font-size:3.157rem !important;
+    }
+     h3, .h3 {
+         font-size:2.369rem !important;
+    }
+     h4, .h4 {
+         font-size:1.777rem !important;
+    }
+     p {
+         font-size:1.333rem !important;
+    }
+     p > div {
+         font-size:1.333rem !important;
+    }
+     .soulmenu a {
+         font-size:1.333rem !important;
+    }
+
+}
+
+@media (min-width: 1300px) { 
+	html, body { 
+		font-size:16px !important; 
+	} 
+}

@@ -9,7 +9,8 @@ if(!class_exists('SoulSites_CC_Scripts')){
         
         public static function load_hooks(){
             add_action('wp_enqueue_scripts', array(__CLASS__, 'enqueue_soulsites_cc_styles'));
-            add_action('wp_enqueue_scripts', array(__CLASS__, 'output_soulsites_cc_css_variables'), 100);
+            add_action('wp_enqueue_scripts', array(__CLASS__, 'output_soulsites_cc_color_css_variables'), 100);
+            add_action('wp_enqueue_scripts', array(__CLASS__, 'output_soulsites_cc_font_css_variables'), 100);
             
             add_action('customize_controls_print_scripts', array(__CLASS__, 'output_soulsites_cc_customizer_scripts'), 40);
         }
@@ -17,13 +18,16 @@ if(!class_exists('SoulSites_CC_Scripts')){
         public static function enqueue_soulsites_cc_styles(){
             // todo replace current stylesheet with a more finished one
             wp_enqueue_style('soulsites-customized-customizer-styles', SOULSITES_CC_URL_PATH . 'assets/css/soulsites-customized-customizer-styles.css');
+            // todo it would probably be a good idea to merge the stylesheets when they start getting bigger and more numerous
+            // enqueue the font's stylesheet
+            wp_enqueue_style('soulsites-customized-customizer-styles', SOULSITES_CC_URL_PATH . 'assets/css/soulsites-customized-customizer-font-styles.css');
         }
 
         /**
          * Obtains the color settings the user has inputted in the Customizer,
          * and outputs CSS variables based on the settings.
          **/
-        public static function output_soulsites_cc_css_variables(){
+        public static function output_soulsites_cc_color_css_variables(){
             // create the list of available color presets
             $available_presets = array( 'off_white_paper' => array('primary' => '#fdfbf1', 'secondary' => '#2C170B'), //primary == the background/body color, secondary == the text color
                                         'black_and_white' => array('primary' => '#ffffff', 'secondary' => '#000000'),
@@ -55,6 +59,51 @@ if(!class_exists('SoulSites_CC_Scripts')){
                 :root {
                   --primary-color: <?php echo $primary; ?> !important; /* background */
                   --secondary-color: <?php echo $secondary; ?> !important; /* foreground */
+                }
+            </style>
+            <?php
+        }
+
+        /**
+         * Obtains the font settings that the SoulSites user has selected and
+         * outputs CSS variables that define the site's font families
+         **/
+        public static function output_soulsites_cc_font_css_variables(){
+            // create the list of available color presets
+            $available_presets = array( /*'off_white_paper' => array('primary' => '#fdfbf1', 'secondary' => '#2C170B'), //primary == the background/body color, secondary == the text color
+                                        'black_and_white' => array('primary' => '#ffffff', 'secondary' => '#000000'),
+                                        'sunday_paper'    => array('primary' => '#F7FAFC', 'secondary' => '#1A202C'),
+                                        'red_and_green'   => array('primary' => '#ff0000', 'secondary' => '#27ff00')*/
+            );
+
+            // get the user's selected color options
+            $font_set = get_option('soulsites_available_font_presets', '');
+            
+            // if the user has selected a custom color scheme
+/*            if($color_set === 'custom'){
+                // load the custom colors
+//                $primary    = get_option('soulsites_custom_site_primary_color', '#ffffff');
+//                $secondary  = get_option('soulsites_custom_site_secondary_color', '#000000');
+            }else*/if(isset($available_presets[$font_set])){
+                // if the user has selected from our list of preset colors, apply the preset
+                $primary    = $available_presets[$font_set]['primary'];
+                $secondary  = $available_presets[$font_set]['secondary'];
+                $extra      = $available_presets[$font_set]['extra'];
+            }else{
+                // if the user hasn't selected a font preset, or if for some reason we can't get the selected fonts, default to this preset
+                $primary    = '"Chronicle SSm A", "Chronicle SSm B", serif';
+                $secondary  = '"Sentinel A", "Sentinel B", serif';
+                $extra      = '"Sentinel A", "Sentinel B", serif';
+            }
+
+            // output the relavent font family source link and the font CSS variables based on the user's input
+//            <link rel='stylesheet' id='soultype2-font-0-css'  href='https://fonts.googleapis.com/css?family=Arvo%3A400%2C400i%2C700%2C700i%7CMontserrat%3A600%2C700&#038;ver=5.2.2' type='text/css' media='all' />
+            ?>
+            <style type="text/css">
+                :root {
+                    --primary-typeface: <?php echo $primary; ?>  !important;    /* primary font */
+                    --secondary-typeface: <?php echo $secondary; ?> !important; /* secondary font */
+                    --extra-typeface: <?php echo $extra; ?> !important;         /* extra font*/
                 }
             </style>
             <?php
