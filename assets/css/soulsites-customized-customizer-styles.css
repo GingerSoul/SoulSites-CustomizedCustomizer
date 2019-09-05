@@ -6,7 +6,7 @@
     clear:both;
 }
 
-.fl-page *{
+.fl-row *{
     background: var(--primary-color);
     color: var(--secondary-color);
 }
@@ -29,10 +29,6 @@ p{
 
 html, body, .fl-page-content, .oncanvas .ss-subsection{
     background:var(--primary-color);
-}
-
-.fl-page *{
-    color:var(--secondary-color);
 }
 
 ::selection { 
