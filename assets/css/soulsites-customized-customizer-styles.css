@@ -6,7 +6,7 @@
     clear:both;
 }
 
-.notinbuilder .fl-builder-content *{
+.notinbuilder .fl-builder-content{
     background: var(--primary-color);
     color: var(--secondary-color);
 }

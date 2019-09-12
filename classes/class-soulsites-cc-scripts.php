@@ -26,7 +26,9 @@ if(!class_exists('SoulSites_CC_Scripts')){
         public static function output_soulsites_cc_font_link(){
 
             // create the list of available font links by preset
-            $available_font_src_links = array( 'default' => 'https://fonts.googleapis.com/css?family=Arvo%3A400%2C400i%2C700%2C700i%7CMontserrat%3A600%2C700&#038;ver=5.2.2', //todo replace with a link for the Chronicle font family
+            $available_font_src_links = array( 
+            'default' => 'https://fonts.googleapis.com/css?family=IBM+Plex+Sans:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i|IBM+Plex+Serif:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i&display=swap', 
+            //todo replace with a link for the Chronicle font family
                                             /*'off_white_paper' => '*link*',
                                             'black_and_white' => '*link*',
                                             'sunday_paper'    => '*link*',
@@ -100,7 +102,12 @@ if(!class_exists('SoulSites_CC_Scripts')){
          **/
         public static function output_soulsites_cc_font_css_variables(){
             // create the list of available font presets
-            $available_presets = array( 'default' => array('primary' => '"Chronicle SSm A", "Chronicle SSm B", serif', 'secondary' => '"Sentinel A", "Sentinel B", serif', 'extra' => '"Sentinel A", "Sentinel B", serif'),
+            $available_presets = array( 
+	            'default' => array(
+		            'primary' => 'IBM Plex Serif, serif', 
+		            'secondary' => 'IBM Plex Sans, sans-serif', 
+		            'extra' => 'IBM Plex Sans, sans-serif'
+	            ),
                                         /*'off_white_paper' => array('primary' => '#fdfbf1', 'secondary' => '#2C170B'), //primary == the background/body color, secondary == the text color
                                         'black_and_white' => array('primary' => '#ffffff', 'secondary' => '#000000'),
                                         'sunday_paper'    => array('primary' => '#F7FAFC', 'secondary' => '#1A202C'),
