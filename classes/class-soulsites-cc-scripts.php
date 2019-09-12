@@ -8,11 +8,41 @@ if(!class_exists('SoulSites_CC_Scripts')){
         }
         
         public static function load_hooks(){
+            // output the selected font's src link in the page head
+            add_action('wp_head', array(__CLASS__, 'output_soulsites_cc_font_link'));
+
+            // output the user's selected font and color choices
             add_action('wp_enqueue_scripts', array(__CLASS__, 'enqueue_soulsites_cc_styles'), 100);
             add_action('wp_enqueue_scripts', array(__CLASS__, 'output_soulsites_cc_color_css_variables'), 100);
             add_action('wp_enqueue_scripts', array(__CLASS__, 'output_soulsites_cc_font_css_variables'), 100);
-            
+
+            // create the bit of JS that shows/hides the custom site colors in the WP Customtizer
             add_action('customize_controls_print_scripts', array(__CLASS__, 'output_soulsites_cc_customizer_scripts'), 40);
+        }
+
+        /**
+         * Outputs the style link for the selected font preset.
+         **/
+        public static function output_soulsites_cc_font_link(){
+
+            // create the list of available font links by preset
+            $available_font_src_links = array( 'default' => 'https://fonts.googleapis.com/css?family=Arvo%3A400%2C400i%2C700%2C700i%7CMontserrat%3A600%2C700&#038;ver=5.2.2', //todo replace with a link for the Chronicle font family
+                                            /*'off_white_paper' => '*link*',
+                                            'black_and_white' => '*link*',
+                                            'sunday_paper'    => '*link*',
+                                            'red_and_green'   => '*link*'*/
+            );
+
+            // get the user's selected font schema
+            $font_set = get_option('soulsites_available_font_presets', 'default');
+
+            // if we have a link for the selected font schema
+            if(isset($available_font_src_links[$font_set])){
+                // output the style link for the font(s)
+                ?>
+                <link rel='stylesheet' id='soulsites-cc-font-choice-1'  href="<?php echo esc_url($available_font_src_links[$font_set]); ?>" type='text/css' media='all' />
+                <?php
+            }
         }
         
         public static function enqueue_soulsites_cc_styles(){
@@ -69,7 +99,7 @@ if(!class_exists('SoulSites_CC_Scripts')){
          * outputs CSS variables that define the site's font families
          **/
         public static function output_soulsites_cc_font_css_variables(){
-            // create the list of available color presets
+            // create the list of available font presets
             $available_presets = array( 'default' => array('primary' => '"Chronicle SSm A", "Chronicle SSm B", serif', 'secondary' => '"Sentinel A", "Sentinel B", serif', 'extra' => '"Sentinel A", "Sentinel B", serif'),
                                         /*'off_white_paper' => array('primary' => '#fdfbf1', 'secondary' => '#2C170B'), //primary == the background/body color, secondary == the text color
                                         'black_and_white' => array('primary' => '#ffffff', 'secondary' => '#000000'),
@@ -77,7 +107,7 @@ if(!class_exists('SoulSites_CC_Scripts')){
                                         'red_and_green'   => array('primary' => '#ff0000', 'secondary' => '#27ff00')*/
             );
 
-            // get the user's selected color options
+            // get the user's selected font options
             $font_set = get_option('soulsites_available_font_presets', 'default');
             
             // if the user has selected a custom font scheme
@@ -101,8 +131,6 @@ if(!class_exists('SoulSites_CC_Scripts')){
                 $extra      = 'cursive';
             }
 
-            // output the relavent font family source link and the font CSS variables based on the user's input
-//            <link rel='stylesheet' id='soultype2-font-0-css'  href='https://fonts.googleapis.com/css?family=Arvo%3A400%2C400i%2C700%2C700i%7CMontserrat%3A600%2C700&#038;ver=5.2.2' type='text/css' media='all' />
             ?>
             <style type="text/css">
                 :root {
@@ -114,6 +142,9 @@ if(!class_exists('SoulSites_CC_Scripts')){
             <?php
         }
 
+        /**
+         * Attaches a listener for showing and hiding the SSCC custom color options in the WP_Customizer depending on if the user has selected to use custom colors.
+         **/
         public static function output_soulsites_cc_customizer_scripts(){
             ?>
             <script type="text/javascript">
