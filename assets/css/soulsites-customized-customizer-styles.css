@@ -6,7 +6,7 @@
     clear:both;
 }
 
-.fl-row *{
+.notinbuilder .fl-builder-content *{
     background: var(--primary-color);
     color: var(--secondary-color);
 }
@@ -27,7 +27,7 @@ p{
     opacity: .4!important;
 }
 
-html, body, .fl-page-content, .oncanvas .ss-subsection{
+html, body{
     background:var(--primary-color);
 }
 
