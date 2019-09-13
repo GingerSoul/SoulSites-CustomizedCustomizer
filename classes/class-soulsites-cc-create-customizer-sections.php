@@ -150,10 +150,11 @@ if(!class_exists('SoulSites_CC_Create_Customizer_Sections')){
                     'type'        => 'select',
                     'choices'     => array(
                         // todo fill out the options with valid font combinations
-                        'default'           => __('Chronicler', 'soulsites-cc'),
-                        'off_white_paper'   => __('Modern, Neutral', 'soulsites-cc'),
-                        'black_and_white'   => __('Eccentric, Classic', 'soulsites-cc'),
-                        'sunday_paper'      => __('Minimal, Neutral', 'soulsites-cc'),
+                        'default'           => __('IBM Plex', 'soulsites-cc'),
+                        'system_ui'   => __('System UI', 'soulsites-cc'),
+                        'alegreya'   => __('Alegreya', 'soulsites-cc'),
+                        'roboto'   => __('Roboto', 'soulsites-cc'),
+                        'libre'      => __('Libre', 'soulsites-cc'),
                         'red_and_green'     => __('Conventional, Simple', 'soulsites-cc'),
                         'custom'            => __('Reading, Blog', 'soulsites-cc'),
                     ),

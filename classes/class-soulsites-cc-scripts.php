@@ -27,12 +27,11 @@ if(!class_exists('SoulSites_CC_Scripts')){
 
             // create the list of available font links by preset
             $available_font_src_links = array( 
-            'default' => 'https://fonts.googleapis.com/css?family=IBM+Plex+Sans:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i|IBM+Plex+Serif:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i&display=swap', 
-            //todo replace with a link for the Chronicle font family
-                                            /*'off_white_paper' => '*link*',
-                                            'black_and_white' => '*link*',
-                                            'sunday_paper'    => '*link*',
-                                            'red_and_green'   => '*link*'*/
+            'default' => 'https://fonts.googleapis.com/css?family=IBM+Plex+Sans:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i|IBM+Plex+Serif:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i&display=swap',
+            'system_ui'   => '',
+            'alegreya'   => 'https://fonts.googleapis.com/css?family=Alegreya+Sans:100,100i,300,300i,400,400i,500,500i,700,700i,800,800i,900,900i|Alegreya:400,400i,500,500i,700,700i,800,800i,900,900i&display=swap',
+            'libre'   => 'https://fonts.googleapis.com/css?family=Libre+Baskerville:400,400i,700|Libre+Franklin:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i&display=swap',
+            'roboto'   => 'https://fonts.googleapis.com/css?family=Roboto+Slab:100,300,400,700|Roboto:100,100i,300,300i,400,400i,500,500i,700,700i,900,900i&display=swap'
             );
 
             // get the user's selected font schema
@@ -108,10 +107,27 @@ if(!class_exists('SoulSites_CC_Scripts')){
 		            'secondary' => 'IBM Plex Sans, sans-serif', 
 		            'extra' => 'IBM Plex Sans, sans-serif'
 	            ),
-                                        /*'off_white_paper' => array('primary' => '#fdfbf1', 'secondary' => '#2C170B'), //primary == the background/body color, secondary == the text color
-                                        'black_and_white' => array('primary' => '#ffffff', 'secondary' => '#000000'),
-                                        'sunday_paper'    => array('primary' => '#F7FAFC', 'secondary' => '#1A202C'),
-                                        'red_and_green'   => array('primary' => '#ff0000', 'secondary' => '#27ff00')*/
+	            'system_ui' => array(
+		            'primary' => 'system-ui, sans-serif', 
+		            'secondary' => 'system-ui, sans-serif', 
+		            'extra' => 'system-ui, sans-serif'
+	            ),
+	            'alegreya' => array(
+		            'primary' => 'Alegreya, serif', 
+		            'secondary' => 'Alegreya Sans, sans-serif', 
+		            'extra' => 'Alegreya Sans, sans-serif'
+	            ),
+	            'libre' => array(
+		            'primary' => 'Libre Baskerville, serif', 
+		            'secondary' => 'Libre Franklin, sans-serif', 
+		            'extra' => 'Libre Franklin, sans-serif'
+	            ),
+	            'roboto' => array(
+		            'primary' => 'Roboto, sans-serif', 
+		            'secondary' => 'Roboto Slab, sans-serif', 
+		            'extra' => 'Roboto Slab, sans-serif'
+	            ),
+
             );
 
             // get the user's selected font options

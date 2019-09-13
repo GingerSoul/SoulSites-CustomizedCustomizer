@@ -10,28 +10,28 @@
 html, body { 
 	font-size:12px !important; 
 	line-height:1.5 !important; 
-	font-family:var(--primary-typeface);
+	font-family:var(--primary-typeface)!important;
 } 	
 
 .display-2 { 
 	font-size:4.3rem !important; 
 	line-height:1.1 !important; 
 	margin:0 0 1.125rem !important; 
-	font-family:var(--secondary-typeface); 
+	font-family:var(--secondary-typeface)!important; 
 } 
 
  .display-3 {
      font-size:3.583rem !important;
      line-height:1.1 !important;
      margin:0 0 1.125rem !important;
-     font-family:var(--secondary-typeface);
+     font-family:var(--secondary-typeface)!important;
 }
 
  .display-4 {
      font-size:2.986rem !important;
      line-height:1.1 !important;
      margin:0 0 1.125rem !important;
-     font-family:var(--secondary-typeface);
+     font-family:var(--secondary-typeface)!important;
 }
 
 h1, .h1 {
@@ -39,7 +39,7 @@ h1, .h1 {
      font-weight:600 !important;
      line-height:1.2 !important;
      margin:0 0 1.2375rem !important;
-     font-family:var(--secondary-typeface);
+     font-family:var(--secondary-typeface)!important;
 }
 
 h2, .h2 {
@@ -47,7 +47,7 @@ h2, .h2 {
      font-weight:600 !important;
      line-height:1.2 !important;
      margin:0 0 1rem !important;
-     font-family:var(--secondary-typeface);
+     font-family:var(--secondary-typeface)!important;
 }
 
 h3, .h3 {
@@ -55,7 +55,7 @@ h3, .h3 {
      font-weight:600 !important;
      line-height:1.2 !important;
      margin:0 0 1rem !important;
-     font-family:var(--secondary-typeface);
+     font-family:var(--secondary-typeface)!important;
 }
 
  h4, .h4 {
@@ -63,13 +63,13 @@ h3, .h3 {
      font-weight:600 !important;
      line-height:1.4 !important;
      margin:0 0 1rem !important;
-     font-family:var(--secondary-typeface);
+     font-family:var(--secondary-typeface)!important;
 }
 
  .soulbuttons, button, .edd-add-to-cart-label {
      font-size:1rem !important;
      font-weight:600 !important;
-     font-family:var(--secondary-typeface);
+     font-family:var(--secondary-typeface)!important;
 }
 
  p {
@@ -77,27 +77,27 @@ h3, .h3 {
      font-weight:400 !important;
      line-height:1.5 !important;
      margin:0 0 1.5rem !important;
-     font-family:var(--primary-typeface);
+     font-family:var(--primary-typeface)!important;
 }
 
  p > div {
      font-size:1.2rem !important;
      font-weight:400 !important;
      line-height:1.5 !important;
-     font-family:var(--primary-typeface);
+     font-family:var(--primary-typeface)!important;
 }
 
  .soulmenu a {
      font-size:1.2rem !important;
      font-weight:600 !important;
-     font-family:var(--secondary-typeface);
+     font-family:var(--secondary-typeface)!important;
 }
 
  h5, .h5 {
      font-size:1.1rem !important;
      font-weight:300 !important;
      margin:0 0 1rem !important;
-     font-family:var(--primary-typeface);
+     font-family:var(--primary-typeface)!important;
 }
 
  .tinycopy, div.tinycopy p, .soulbutton {
@@ -111,7 +111,7 @@ h3, .h3 {
      font-size:1.1rem !important;
      font-weight:400 !important;
      line-height:1.6 !important;
-     font-family:var(--primary-typeface);
+     font-family:var(--primary-typeface)!important;
 }
 
 
