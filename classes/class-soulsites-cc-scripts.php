@@ -84,12 +84,15 @@ if(!class_exists('SoulSites_CC_Scripts')){
                 $secondary  = '#000000';
             }
 
+            // get if the user has reversed the color order
+            $colors_reversed = get_option('soulsites_flip_color_order');
+
             // output the CSS variables based on the user's input
             ?>
             <style type="text/css">
                 :root {
-                  --primary-color: <?php echo $primary; ?> !important; /* background */
-                  --secondary-color: <?php echo $secondary; ?> !important; /* foreground */
+                  --primary-color: <?php echo ('1' !== $colors_reversed) ? $primary : $secondary; ?> !important; /* background */
+                  --secondary-color: <?php echo ('1' !== $colors_reversed) ? $secondary : $primary; ?> !important; /* foreground */
                 }
             </style>
             <?php
@@ -131,14 +134,9 @@ if(!class_exists('SoulSites_CC_Scripts')){
             );
 
             // get the user's selected font options
-            $font_set = get_option('soulsites_available_font_presets', 'default');
-            
-            // if the user has selected a custom font scheme
-/*            if($color_set === 'custom'){
-                // load the custom colors
-//                $primary    = get_option('soulsites_custom_site_primary_color', '#ffffff');
-//                $secondary  = get_option('soulsites_custom_site_secondary_color', '#000000');
-            }else*/if(isset($available_presets[$font_set])){
+            $font_set = get_option('soulsites_available_font_presets');
+
+            if(isset($available_presets[$font_set])){
                 // if the user has selected from our list of preset fonts, apply the preset
                 $primary    = $available_presets[$font_set]['primary'];
                 $secondary  = $available_presets[$font_set]['secondary'];
@@ -154,12 +152,15 @@ if(!class_exists('SoulSites_CC_Scripts')){
                 $extra      = 'cursive';
             }
 
+            // get if the user has reversed the font order
+            $fonts_reversed = get_option('soulsites_flip_font_order');
+
             ?>
             <style type="text/css">
                 :root {
-                    --primary-typeface: <?php echo $primary; ?>  !important;    /* primary font */
-                    --secondary-typeface: <?php echo $secondary; ?> !important; /* secondary font */
-                    --extra-typeface: <?php echo $extra; ?> !important;         /* extra font*/
+                    --primary-typeface: <?php echo ('1' !== $fonts_reversed) ? $primary : $secondary; ?>    !important;     /* primary font */
+                    --secondary-typeface: <?php echo ('1' !== $fonts_reversed) ? $secondary : $primary; ?>  !important;     /* secondary font */
+                    --extra-typeface: <?php echo $extra; ?> !important;                                                     /* extra font*/
                 }
             </style>
             <?php
