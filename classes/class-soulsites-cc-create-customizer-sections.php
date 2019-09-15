@@ -59,7 +59,8 @@ if(!class_exists('SoulSites_CC_Create_Customizer_Sections')){
                         'off_white_paper' => __('Off White Paper', 'soulsites-cc'),
                         'black_and_white' => __('Black and White', 'soulsites-cc'),
                         'sunday_paper'    => __('Sunday Paper', 'soulsites-cc'),
-                        'red_and_green'   => __('Red and Green', 'soulsites-cc'),
+                        'dark_mode'       => __('Dark Mode', 'soulsites-cc'),
+                        'tailwind_gray'   => __('Tailwind Gray (Dark)', 'soulsites-cc'),
                         'custom'          => __('Use Custom Colors', 'soulsites-cc'),
                     ),
                 )
@@ -179,8 +180,10 @@ if(!class_exists('SoulSites_CC_Create_Customizer_Sections')){
                         'default'           => __('IBM Plex', 'soulsites-cc'),
                         'system_ui'         => __('System UI', 'soulsites-cc'),
                         'alegreya'          => __('Alegreya', 'soulsites-cc'),
+                        'cormorant'         => __('Cormorant', 'soulsites-cc'),
+                        'dm'                => __('DM', 'soulsites-cc'),
+                        'libre'             => __('Libre', 'soulsites-cc')                        
                         'roboto'            => __('Roboto', 'soulsites-cc'),
-                        'libre'             => __('Libre', 'soulsites-cc')
                     ),
                 )
             );

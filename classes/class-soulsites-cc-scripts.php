@@ -30,6 +30,8 @@ if(!class_exists('SoulSites_CC_Scripts')){
             'default' => 'https://fonts.googleapis.com/css?family=IBM+Plex+Sans:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i|IBM+Plex+Serif:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i&display=swap',
             'system_ui'   => '',
             'alegreya'   => 'https://fonts.googleapis.com/css?family=Alegreya+Sans:100,100i,300,300i,400,400i,500,500i,700,700i,800,800i,900,900i|Alegreya:400,400i,500,500i,700,700i,800,800i,900,900i&display=swap',
+            'cormorant'   => 'https://fonts.googleapis.com/css?family=Cormorant+Garamond:300,300i,400,400i,500,500i,600,600i,700,700i|Cormorant+SC:300,400,500,600,700&display=swap',
+            'dm'   => 'https://fonts.googleapis.com/css?family=DM+Sans:400,400i,500,500i,700,700i|DM+Serif+Display:400,400i&display=swap',
             'libre'   => 'https://fonts.googleapis.com/css?family=Libre+Baskerville:400,400i,700|Libre+Franklin:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i&display=swap',
             'roboto'   => 'https://fonts.googleapis.com/css?family=Roboto+Slab:100,300,400,700|Roboto:100,100i,300,300i,400,400i,500,500i,700,700i,900,900i&display=swap'
             );
@@ -60,10 +62,29 @@ if(!class_exists('SoulSites_CC_Scripts')){
          **/
         public static function output_soulsites_cc_color_css_variables(){
             // create the list of available color presets
-            $available_presets = array( 'off_white_paper' => array('primary' => '#fdfbf1', 'secondary' => '#2C170B'), //primary == the background/body color, secondary == the text color
-                                        'black_and_white' => array('primary' => '#ffffff', 'secondary' => '#000000'),
-                                        'sunday_paper'    => array('primary' => '#F7FAFC', 'secondary' => '#1A202C'),
-                                        'red_and_green'   => array('primary' => '#ff0000', 'secondary' => '#27ff00')
+            $available_presets = array( 
+            	'off_white_paper' => array(
+            		'primary' => '#fdfbf1', 
+            		'secondary' => '#2C170B'
+            	), //primary == the background/body color, secondary == the text color
+                                        
+	            'black_and_white' => array(
+		            'primary' => '#ffffff', 
+		            'secondary' => '#000000'
+	            ),
+	            'sunday_paper'    => array(
+		            'primary' => '#F7FAFC', 
+		            'secondary' => '#1A202C'
+	            ),
+	            'dark_mode'   => array(
+		            'primary' => '#212121', 
+		            'secondary' => '#ffffff'
+	            ),
+	            'tailwind_gray'   => array(
+		            'primary' => '#4A5568', 
+		            'secondary' => '#F7FAFC'
+	            ),
+	            
             );
 
             // get the user's selected color options
@@ -119,6 +140,16 @@ if(!class_exists('SoulSites_CC_Scripts')){
 		            'primary' => 'Alegreya, serif', 
 		            'secondary' => 'Alegreya Sans, sans-serif', 
 		            'extra' => 'Alegreya Sans, sans-serif'
+	            ),
+	            'cormorant' => array(
+		            'primary' => 'Cormorant Garamond, serif', 
+		            'secondary' => 'Cormorant SC, serif', 
+		            'extra' => 'Cormorant SC, serif'
+	            ),
+	            'dm' => array(
+		            'primary' => 'DM Sans, serif', 
+		            'secondary' => 'DM Serif Display, serif', 
+		            'extra' => 'DM Serif Display, serif'
 	            ),
 	            'libre' => array(
 		            'primary' => 'Libre Baskerville, serif', 
