@@ -182,7 +182,7 @@ if(!class_exists('SoulSites_CC_Create_Customizer_Sections')){
                         'alegreya'          => __('Alegreya', 'soulsites-cc'),
                         'cormorant'         => __('Cormorant', 'soulsites-cc'),
                         'dm'                => __('DM', 'soulsites-cc'),
-                        'libre'             => __('Libre', 'soulsites-cc')                        
+                        'libre'             => __('Libre', 'soulsites-cc'),
                         'roboto'            => __('Roboto', 'soulsites-cc'),
                     ),
                 )
@@ -208,7 +208,7 @@ if(!class_exists('SoulSites_CC_Create_Customizer_Sections')){
                 'soulsites_use_one_font_exclusively',
                 array(
                     'label'         => __('Set one font in the combination as the exclusive one?', 'soulsites-cc'),
-                    'description'   => __('You can set one of the fonts offered in the combination as the only one to be used on the site. This is handy for "minimalist" style sites.', 'soulsites-cc'),
+                    'description'   => __('You can set one of the fonts offered in the combination as the only one to be used on the site. This is handy for "minimalist" style sites, but removes the contrast that comes from having a font combination.', 'soulsites-cc'),
                     'section'       => 'soulsites_font_selection',
                     'settings'      => 'soulsites_use_one_font_exclusively',
                     'type'          => 'select',

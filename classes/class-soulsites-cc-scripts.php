@@ -167,11 +167,26 @@ if(!class_exists('SoulSites_CC_Scripts')){
             // get the user's selected font options
             $font_set = get_option('soulsites_available_font_presets');
 
+            // find out if the user has set one font family to be the only one used on the site
+            $exclusive_font_set = get_option('soulsites_use_one_font_exclusively', '');
+
             if(isset($available_presets[$font_set])){
                 // if the user has selected from our list of preset fonts, apply the preset
                 $primary    = $available_presets[$font_set]['primary'];
                 $secondary  = $available_presets[$font_set]['secondary'];
                 $extra      = $available_presets[$font_set]['extra'];
+
+                // if the user has selected the Primary font as the only one to display on the site
+                if('primary' === $exclusive_font_set){
+                    // set the other font variables to the same as the Primary
+                    $secondary  = $primary;
+                    $extra      = $primary;
+
+                }elseif('secondary' === $exclusive_font_set){
+                    // if the user has selected the Secondary font as the main font,  set the other font variables to the same as the Secondary
+                    $primary    = $secondary;
+                    $extra      = $secondary;
+                }
             }else{
                 // if the user hasn't selected a font preset, or if for some reason we can't get the selected fonts, default to this preset
                 $primary    = '"Chronicle SSm A", "Chronicle SSm B", serif';
@@ -181,6 +196,18 @@ if(!class_exists('SoulSites_CC_Scripts')){
                 $primary    = 'cursive';
                 $secondary  = 'cursive';
                 $extra      = 'cursive';
+                
+                // if the user has selected the Primary font as the only one to display on the site
+                if('primary' === $exclusive_font_set){
+                    // set the other font variables to the same as the Primary
+                    $secondary  = $primary;
+                    $extra      = $primary;
+
+                }elseif('secondary' === $exclusive_font_set){
+                    // if the user has selected the Secondary font as the main font,  set the other font variables to the same as the Secondary
+                    $primary    = $secondary;
+                    $extra      = $secondary;
+                }
             }
 
             // get if the user has reversed the font order
@@ -206,17 +233,33 @@ if(!class_exists('SoulSites_CC_Scripts')){
                 jQuery(document).ready(function(){
                     
                     // setup a delay for the color scheme selector so that we're sure the selector has been created before trying to apply it's listening function
-                    var loopCount = 0;
+                    var colorLoopCount = 0;
                     var colorChangeSelectListener = setTimeout(function(){
                         // if the color selector exists or we've been trying to find it for 5 seconds
                         var colorSelector = jQuery('#_customize-input-soulsites_available_color_presets')
-                        if(colorSelector.length > 0 || loopCount > 20){
+                        if(colorSelector.length > 0 || colorLoopCount > 20){
                             // try applying the listener function and exit the loop
-                            jQuery('#_customize-input-soulsites_available_color_presets').on('change', showHideCustomColorInputs);
+                            colorSelector.on('change', showHideCustomColorInputs);
                             showHideCustomColorInputs();
                             clearTimeout(colorChangeSelectListener);
                         }else{
-                            loopCount++;
+                            colorLoopCount++;
+                        }
+                        
+                    }, 250);
+
+                    // setup a delay for the font selector so that the "Font Flipper" is only shown when there isn't an exclusive font set
+                    var fontLoopCount = 0;
+                    var fontExclusivitySelectListener = setTimeout(function(){
+                        // if the font exclusivity select exists or we've been trying to find it for 5 seconds
+                        var fontSelector = jQuery('#_customize-input-soulsites_use_one_font_exclusively')
+                        if(fontSelector.length > 0 || fontLoopCount > 20){
+                            // try applying the listener function and exit the loop
+                            fontSelector.on('change', showHideReverseFontInput);
+                            showHideReverseFontInput();
+                            clearTimeout(fontExclusivitySelectListener);
+                        }else{
+                            fontLoopCount++;
                         }
                         
                     }, 250);
@@ -238,6 +281,24 @@ if(!class_exists('SoulSites_CC_Scripts')){
 
                     // call showHide once at page load to setup the input display
                     showHideCustomColorInputs();
+                    
+                    /**
+                     * Displays or hides the reverse font input depending on if
+                     * the user has opted to set an exclusive font for the site
+                     **/
+                    function showHideReverseFontInput(){
+                        var selector    = jQuery('#_customize-input-soulsites_use_one_font_exclusively');
+                        var fontReverse = jQuery('#customize-control-soulsites_flip_font_order');
+
+                        if(selector.length > 0 && selector.val() === ''){
+                            fontReverse.css('display', 'list-item');
+                        }else{
+                            fontReverse.css('display', 'none');
+                        }
+                    }
+
+                    // call showHide once at page load to setup the input display
+                    showHideReverseFontInput();
                 });
             </script>
             <?php
