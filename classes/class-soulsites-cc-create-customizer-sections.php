@@ -30,7 +30,7 @@ if(!class_exists('SoulSites_CC_Create_Customizer_Sections')){
             // create the SoulSites color selection section
             $wp_customizer->add_section( 'soulsites_color_selection', array(
                                                                         'title' => __('SoulSites Color Selection', 'soulsites-cc'),
-                                                                        'description' => __('Control your site\s color scheme from this panel of options.', 'soulsites-cc'),
+                                                                        'description' => __('Control your SoulSite\'s color scheme from this panel of options.', 'soulsites-cc'),
                                                                         'priority' => 160,
                                                                         'capability' => 'edit_theme_options') //todo make sure these are the appropriate permissions for a soulsite user
             );
@@ -51,7 +51,7 @@ if(!class_exists('SoulSites_CC_Create_Customizer_Sections')){
                 'soulsites_available_color_presets',
                 array(
                     'label'       => __('Select a color preset for your SoulSite', 'soulsites-cc'),
-                    'description' => __('Choose a color scheme from our carefully created selection of options', 'soulsites-cc'),
+                    'description' => __('Choose a color scheme from our carefully created selection of options, or create your own amazing color scheme', 'soulsites-cc'),
                     'section'     => 'soulsites_color_selection',
                     'settings'    => 'soulsites_available_color_presets',
                     'type'        => 'select',
@@ -152,11 +152,12 @@ if(!class_exists('SoulSites_CC_Create_Customizer_Sections')){
             // create the SoulSites font combination selector section
             $wp_customizer->add_section( 'soulsites_font_selection', array(
                                                                         'title' => __('SoulSites Font Selection', 'soulsites-cc'),
-                                                                        'description' => __('Control your site\s fonts from this selector', 'soulsites-cc'),
+                                                                        'description' => __('Control your SoulSite\'s font layout from this panel', 'soulsites-cc'),
                                                                         'priority' => 170,
                                                                         'capability' => 'edit_theme_options') //todo make sure these are the appropriate permissions for a soulsite user
             );
 
+            /*** FONT PRESET DROPDOWN SECTION ***/
             // create the setting to store the selected font combination in
             $wp_customizer->add_setting(
                 'soulsites_available_font_presets',
@@ -173,7 +174,7 @@ if(!class_exists('SoulSites_CC_Create_Customizer_Sections')){
                 'soulsites_available_font_presets',
                 array(
                     'label'       => __('Select a font combination preset for your SoulSite', 'soulsites-cc'),
-                    'description' => __('Choose a font combination from our carefully created selection of compatible fonts', 'soulsites-cc'),
+                    'description' => __('Choose a font combination from our carefully created selection of compatible fonts. Font combinations are made up of a Primary font and a Secondary font. The Primary font is the one you see the most of, it\'s used for the page body text and certain text elements. The Secondary font is used for headlines and elements that typically benefit from being distinguished from the main text style.', 'soulsites-cc'),
                     'section'     => 'soulsites_font_selection',
                     'settings'    => 'soulsites_available_font_presets',
                     'type'        => 'select',
@@ -224,7 +225,33 @@ if(!class_exists('SoulSites_CC_Create_Customizer_Sections')){
                     ),
                 )
             );
+
+            /*** FONT PRIMARY/SECONDARY FLIP CONTROLS ***/
+            /** 
+             * Allows the user to flip which font is used for the Primary and which is used for the Secondary
+             **/
+            // create the setting to store the if the user wants to flip the primary and secondary fonts around
+            $wp_customizer->add_setting(
+                'soulsites_flip_font_order',
+                array(
+                    'default'           => '',
+                    'type'              => 'option',
+                    'capability'        => 'edit_theme_options',
+                    'sanitize_callback' => 'sanitize_text_field',
+                )
+            );
             
+            // Register controls.
+            $wp_customizer->add_control(
+                'soulsites_flip_font_order',
+                array(
+                    'label'         => __('Reverse the Primary and Secondary fonts?', 'soulsites-cc'),
+                    'description'   => __('You can choose to reverse the Primary and Secondary fonts so that the Secondary font is used for the majority of the page text and the Primary font is used for headings.', 'soulsites-cc'),
+                    'section'       => 'soulsites_font_selection',
+                    'settings'      => 'soulsites_flip_font_order',
+                    'type'          => 'checkbox'
+                )
+            );
         }
     }
     new SoulSites_CC_Create_Customizer_Sections;
