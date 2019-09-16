@@ -30,9 +30,10 @@ if(!class_exists('SoulSites_CC_Scripts')){
             'default' => 'https://fonts.googleapis.com/css?family=IBM+Plex+Sans:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i|IBM+Plex+Serif:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i&display=swap',
             'system_ui'   => '',
             'alegreya'   => 'https://fonts.googleapis.com/css?family=Alegreya+Sans:100,100i,300,300i,400,400i,500,500i,700,700i,800,800i,900,900i|Alegreya:400,400i,500,500i,700,700i,800,800i,900,900i&display=swap',
-            'cormorant'   => 'https://fonts.googleapis.com/css?family=Cormorant+Garamond:300,300i,400,400i,500,500i,600,600i,700,700i|Cormorant+SC:300,400,500,600,700&display=swap',
             'dm'   => 'https://fonts.googleapis.com/css?family=DM+Sans:400,400i,500,500i,700,700i|DM+Serif+Display:400,400i&display=swap',
-            'libre'   => 'https://fonts.googleapis.com/css?family=Libre+Baskerville:400,400i,700|Libre+Franklin:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i&display=swap',
+            'libre_franklin_libre_baskerville'   => 'https://fonts.googleapis.com/css?family=Libre+Baskerville:400,400i,700|Libre+Franklin:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i&display=swap',
+            'merriweather_cabin'   => 'https://fonts.googleapis.com/css?family=Cabin|Merriweather:300,300i,400,400i,700,700i,900,900i&display=swap',
+            'proza_libre_cormorant_garamond'   => 'https://fonts.googleapis.com/css?family=Cormorant+Garamond:300,300i,400,400i,500,500i,600,600i,700,700i|Proza+Libre:400,400i,500,500i,600,600i,700,700i,800,800i&display=swap',
             'roboto'   => 'https://fonts.googleapis.com/css?family=Roboto+Slab:100,300,400,700|Roboto:100,100i,300,300i,400,400i,500,500i,700,700i,900,900i&display=swap'
             );
 
@@ -80,9 +81,17 @@ if(!class_exists('SoulSites_CC_Scripts')){
 		            'primary' => '#212121', 
 		            'secondary' => '#ffffff'
 	            ),
-	            'tailwind_gray'   => array(
+	            'tailwind_gray_dark'   => array(
 		            'primary' => '#4A5568', 
 		            'secondary' => '#F7FAFC'
+	            ),
+	            'solarized_red_light'   => array(
+		            'primary' => '#fdf6e3', 
+		            'secondary' => '#dc322f'
+	            ),
+	            'solarized_red_dark'   => array(
+		            'primary' => '#dc322f', 
+		            'secondary' => '#fdf6e3'
 	            ),
 	            
             );
@@ -105,15 +114,12 @@ if(!class_exists('SoulSites_CC_Scripts')){
                 $secondary  = '#000000';
             }
 
-            // get if the user has reversed the color order
-            $colors_reversed = get_option('soulsites_flip_color_order');
-
             // output the CSS variables based on the user's input
             ?>
             <style type="text/css">
                 :root {
-                  --primary-color: <?php echo ('1' !== $colors_reversed) ? $primary : $secondary; ?> !important; /* background */
-                  --secondary-color: <?php echo ('1' !== $colors_reversed) ? $secondary : $primary; ?> !important; /* foreground */
+                  --primary-color: <?php echo $primary; ?> !important; /* background */
+                  --secondary-color: <?php echo $secondary; ?> !important; /* foreground */
                 }
             </style>
             <?php
@@ -141,20 +147,25 @@ if(!class_exists('SoulSites_CC_Scripts')){
 		            'secondary' => 'Alegreya Sans, sans-serif', 
 		            'extra' => 'Alegreya Sans, sans-serif'
 	            ),
-	            'cormorant' => array(
-		            'primary' => 'Cormorant Garamond, serif', 
-		            'secondary' => 'Cormorant SC, serif', 
-		            'extra' => 'Cormorant SC, serif'
-	            ),
 	            'dm' => array(
 		            'primary' => 'DM Sans, serif', 
 		            'secondary' => 'DM Serif Display, serif', 
 		            'extra' => 'DM Serif Display, serif'
 	            ),
-	            'libre' => array(
-		            'primary' => 'Libre Baskerville, serif', 
-		            'secondary' => 'Libre Franklin, sans-serif', 
+	            'libre_franklin_libre_baskerville' => array(
+		            'primary' => 'Libre Franklin, serif', 
+		            'secondary' => 'Libre Baskerville, sans-serif', 
 		            'extra' => 'Libre Franklin, sans-serif'
+	            ),
+	            'merriweather_cabin' => array(
+		            'primary' => 'Merriweather, serif', 
+		            'secondary' => 'Cabin, sans-serif', 
+		            'extra' => 'Cabin, sans-serif'
+	            ),
+	            'proza_libre_cormorant_garamond' => array(
+		            'primary' => 'Proza Libre, sans-serif', 
+		            'secondary' => 'Cormorant Garamond, serif', 
+		            'extra' => 'Cormorant Garamond, serif'
 	            ),
 	            'roboto' => array(
 		            'primary' => 'Roboto, sans-serif', 
@@ -165,28 +176,18 @@ if(!class_exists('SoulSites_CC_Scripts')){
             );
 
             // get the user's selected font options
-            $font_set = get_option('soulsites_available_font_presets');
-
-            // find out if the user has set one font family to be the only one used on the site
-            $exclusive_font_set = get_option('soulsites_use_one_font_exclusively', '');
-
-            if(isset($available_presets[$font_set])){
+            $font_set = get_option('soulsites_available_font_presets', 'default');
+            
+            // if the user has selected a custom font scheme
+/*            if($color_set === 'custom'){
+                // load the custom colors
+//                $primary    = get_option('soulsites_custom_site_primary_color', '#ffffff');
+//                $secondary  = get_option('soulsites_custom_site_secondary_color', '#000000');
+            }else*/if(isset($available_presets[$font_set])){
                 // if the user has selected from our list of preset fonts, apply the preset
                 $primary    = $available_presets[$font_set]['primary'];
                 $secondary  = $available_presets[$font_set]['secondary'];
                 $extra      = $available_presets[$font_set]['extra'];
-
-                // if the user has selected the Primary font as the only one to display on the site
-                if('primary' === $exclusive_font_set){
-                    // set the other font variables to the same as the Primary
-                    $secondary  = $primary;
-                    $extra      = $primary;
-
-                }elseif('secondary' === $exclusive_font_set){
-                    // if the user has selected the Secondary font as the main font,  set the other font variables to the same as the Secondary
-                    $primary    = $secondary;
-                    $extra      = $secondary;
-                }
             }else{
                 // if the user hasn't selected a font preset, or if for some reason we can't get the selected fonts, default to this preset
                 $primary    = '"Chronicle SSm A", "Chronicle SSm B", serif';
@@ -196,29 +197,14 @@ if(!class_exists('SoulSites_CC_Scripts')){
                 $primary    = 'cursive';
                 $secondary  = 'cursive';
                 $extra      = 'cursive';
-                
-                // if the user has selected the Primary font as the only one to display on the site
-                if('primary' === $exclusive_font_set){
-                    // set the other font variables to the same as the Primary
-                    $secondary  = $primary;
-                    $extra      = $primary;
-
-                }elseif('secondary' === $exclusive_font_set){
-                    // if the user has selected the Secondary font as the main font,  set the other font variables to the same as the Secondary
-                    $primary    = $secondary;
-                    $extra      = $secondary;
-                }
             }
-
-            // get if the user has reversed the font order
-            $fonts_reversed = get_option('soulsites_flip_font_order');
 
             ?>
             <style type="text/css">
                 :root {
-                    --primary-typeface: <?php echo ('1' !== $fonts_reversed) ? $primary : $secondary; ?>    !important;     /* primary font */
-                    --secondary-typeface: <?php echo ('1' !== $fonts_reversed) ? $secondary : $primary; ?>  !important;     /* secondary font */
-                    --extra-typeface: <?php echo $extra; ?> !important;                                                     /* extra font*/
+                    --primary-typeface: <?php echo $primary; ?>  !important;    /* primary font */
+                    --secondary-typeface: <?php echo $secondary; ?> !important; /* secondary font */
+                    --extra-typeface: <?php echo $extra; ?> !important;         /* extra font*/
                 }
             </style>
             <?php
@@ -233,33 +219,17 @@ if(!class_exists('SoulSites_CC_Scripts')){
                 jQuery(document).ready(function(){
                     
                     // setup a delay for the color scheme selector so that we're sure the selector has been created before trying to apply it's listening function
-                    var colorLoopCount = 0;
+                    var loopCount = 0;
                     var colorChangeSelectListener = setTimeout(function(){
                         // if the color selector exists or we've been trying to find it for 5 seconds
                         var colorSelector = jQuery('#_customize-input-soulsites_available_color_presets')
-                        if(colorSelector.length > 0 || colorLoopCount > 20){
+                        if(colorSelector.length > 0 || loopCount > 20){
                             // try applying the listener function and exit the loop
-                            colorSelector.on('change', showHideCustomColorInputs);
+                            jQuery('#_customize-input-soulsites_available_color_presets').on('change', showHideCustomColorInputs);
                             showHideCustomColorInputs();
                             clearTimeout(colorChangeSelectListener);
                         }else{
-                            colorLoopCount++;
-                        }
-                        
-                    }, 250);
-
-                    // setup a delay for the font selector so that the "Font Flipper" is only shown when there isn't an exclusive font set
-                    var fontLoopCount = 0;
-                    var fontExclusivitySelectListener = setTimeout(function(){
-                        // if the font exclusivity select exists or we've been trying to find it for 5 seconds
-                        var fontSelector = jQuery('#_customize-input-soulsites_use_one_font_exclusively')
-                        if(fontSelector.length > 0 || fontLoopCount > 20){
-                            // try applying the listener function and exit the loop
-                            fontSelector.on('change', showHideReverseFontInput);
-                            showHideReverseFontInput();
-                            clearTimeout(fontExclusivitySelectListener);
-                        }else{
-                            fontLoopCount++;
+                            loopCount++;
                         }
                         
                     }, 250);
@@ -281,24 +251,6 @@ if(!class_exists('SoulSites_CC_Scripts')){
 
                     // call showHide once at page load to setup the input display
                     showHideCustomColorInputs();
-                    
-                    /**
-                     * Displays or hides the reverse font input depending on if
-                     * the user has opted to set an exclusive font for the site
-                     **/
-                    function showHideReverseFontInput(){
-                        var selector    = jQuery('#_customize-input-soulsites_use_one_font_exclusively');
-                        var fontReverse = jQuery('#customize-control-soulsites_flip_font_order');
-
-                        if(selector.length > 0 && selector.val() === ''){
-                            fontReverse.css('display', 'list-item');
-                        }else{
-                            fontReverse.css('display', 'none');
-                        }
-                    }
-
-                    // call showHide once at page load to setup the input display
-                    showHideReverseFontInput();
                 });
             </script>
             <?php
