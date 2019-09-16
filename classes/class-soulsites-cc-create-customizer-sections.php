@@ -56,12 +56,14 @@ if(!class_exists('SoulSites_CC_Create_Customizer_Sections')){
                     'settings'    => 'soulsites_available_color_presets',
                     'type'        => 'select',
                     'choices'     => array(
-                        'off_white_paper' => __('Off White Paper', 'soulsites-cc'),
-                        'black_and_white' => __('Black and White', 'soulsites-cc'),
-                        'sunday_paper'    => __('Sunday Paper', 'soulsites-cc'),
-                        'dark_mode'       => __('Dark Mode', 'soulsites-cc'),
-                        'tailwind_gray'   => __('Tailwind Gray (Dark)', 'soulsites-cc'),
-                        'custom'          => __('Use Custom Colors', 'soulsites-cc'),
+                        'off_white_paper'       => __('Off White Paper', 'soulsites-cc'),
+                        'black_and_white'       => __('Black and White', 'soulsites-cc'),
+                        'sunday_paper'          => __('Sunday Paper', 'soulsites-cc'),
+                        'dark_mode'             => __('Dark Mode', 'soulsites-cc'),
+                        'tailwind_gray_dark'    => __('Tailwind Gray (Dark)', 'soulsites-cc'),
+                        'solarized_red_light'   => __('Solarized Red (Light)', 'soulsites-cc'),
+                        'solarized_red_dark'    => __('Solarized Red (Dark)', 'soulsites-cc'),
+                        'custom'                => __('Use Custom Colors', 'soulsites-cc'),
                     ),
                 )
             );
@@ -115,7 +117,7 @@ if(!class_exists('SoulSites_CC_Create_Customizer_Sections')){
                     )
                 )
             );
-            
+
             /** 
              * Allows the user to flip which color is primary and which is secondary
              **/
@@ -177,13 +179,17 @@ if(!class_exists('SoulSites_CC_Create_Customizer_Sections')){
                     'settings'    => 'soulsites_available_font_presets',
                     'type'        => 'select',
                     'choices'     => array(
-                        'default'           => __('IBM Plex', 'soulsites-cc'),
-                        'system_ui'         => __('System UI', 'soulsites-cc'),
-                        'alegreya'          => __('Alegreya', 'soulsites-cc'),
-                        'cormorant'         => __('Cormorant', 'soulsites-cc'),
-                        'dm'                => __('DM', 'soulsites-cc'),
-                        'libre'             => __('Libre', 'soulsites-cc'),
-                        'roboto'            => __('Roboto', 'soulsites-cc'),
+                        'default'                           => __('IBM Plex', 'soulsites-cc'),
+                        'system_ui'                         => __('System UI', 'soulsites-cc'),
+                        'alegreya'                          => __('Alegreya', 'soulsites-cc'),
+                        'dm'                                => __('DM', 'soulsites-cc'),
+                        'libre_franklin_libre_baskerville'  => __('Libre Franklin / Libre Baskerville', 'soulsites-cc'),
+                        'merriweather_cabin'                => __('Merriweather / Cabin', 'soulsites-cc'),
+                        'proza_libre_cormorant_garamond'    => __('Proza Libre / Cormorant Garamond', 'soulsites-cc'),
+                        'roboto_roboto_slab'                => __('Roboto / Roboto Slab', 'soulsites-cc'),
+                        'source_sans_pro_playfair_display'  => __('Source Sans Pro / Playfair Display', 'soulsites-cc'),
+                        'titillum_web_dosis'                => __('Titillum Web / Dosis', 'soulsites-cc'),
+                        'work_sans_taviraj'                 => __('Work Sans / Taviraj', 'soulsites-cc'),
                     ),
                 )
             );

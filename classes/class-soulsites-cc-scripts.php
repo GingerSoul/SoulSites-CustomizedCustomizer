@@ -30,10 +30,15 @@ if(!class_exists('SoulSites_CC_Scripts')){
             'default' => 'https://fonts.googleapis.com/css?family=IBM+Plex+Sans:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i|IBM+Plex+Serif:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i&display=swap',
             'system_ui'   => '',
             'alegreya'   => 'https://fonts.googleapis.com/css?family=Alegreya+Sans:100,100i,300,300i,400,400i,500,500i,700,700i,800,800i,900,900i|Alegreya:400,400i,500,500i,700,700i,800,800i,900,900i&display=swap',
-            'cormorant'   => 'https://fonts.googleapis.com/css?family=Cormorant+Garamond:300,300i,400,400i,500,500i,600,600i,700,700i|Cormorant+SC:300,400,500,600,700&display=swap',
             'dm'   => 'https://fonts.googleapis.com/css?family=DM+Sans:400,400i,500,500i,700,700i|DM+Serif+Display:400,400i&display=swap',
-            'libre'   => 'https://fonts.googleapis.com/css?family=Libre+Baskerville:400,400i,700|Libre+Franklin:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i&display=swap',
-            'roboto'   => 'https://fonts.googleapis.com/css?family=Roboto+Slab:100,300,400,700|Roboto:100,100i,300,300i,400,400i,500,500i,700,700i,900,900i&display=swap'
+            'libre_franklin_libre_baskerville'   => 'https://fonts.googleapis.com/css?family=Libre+Baskerville:400,400i,700|Libre+Franklin:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i&display=swap',
+            'merriweather_cabin'   => 'https://fonts.googleapis.com/css?family=Cabin|Merriweather:300,300i,400,400i,700,700i,900,900i&display=swap',
+            'proza_libre_cormorant_garamond'   => 'https://fonts.googleapis.com/css?family=Cormorant+Garamond:300,300i,400,400i,500,500i,600,600i,700,700i|Proza+Libre:400,400i,500,500i,600,600i,700,700i,800,800i&display=swap',
+            'roboto_roboto_slab'   => 'https://fonts.googleapis.com/css?family=Roboto+Slab:100,300,400,700|Roboto:100,100i,300,300i,400,400i,500,500i,700,700i,900,900i&display=swap',
+            'proza_libre_cormorant_garamond'   => 'https://fonts.googleapis.com/css?family=Cormorant+Garamond:300,300i,400,400i,500,500i,600,600i,700,700i|Proza+Libre:400,400i,500,500i,600,600i,700,700i,800,800i&display=swap',
+            'source_sans_pro_playfair_display'   => 'https://fonts.googleapis.com/css?family=Playfair+Display:400,400i,700,700i,900,900i|Source+Sans+Pro:200,200i,300,300i,400,400i,600,600i,700,700i,900,900i&display=swap',
+            'titillum_web_dosis'   => 'https://fonts.googleapis.com/css?family=Dosis:200,300,400,500,600,700,800|Titillium+Web:200,200i,300,300i,400,400i,600,600i,700,700i,900&display=swap',
+            'work_sans_taviraj'   => 'https://fonts.googleapis.com/css?family=Taviraj:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i|Work+Sans:100,200,300,400,500,600,700,800,900&display=swap',
             );
 
             // get the user's selected font schema
@@ -80,9 +85,17 @@ if(!class_exists('SoulSites_CC_Scripts')){
 		            'primary' => '#212121', 
 		            'secondary' => '#ffffff'
 	            ),
-	            'tailwind_gray'   => array(
+	            'tailwind_gray_dark'   => array(
 		            'primary' => '#4A5568', 
 		            'secondary' => '#F7FAFC'
+	            ),
+	            'solarized_red_light'   => array(
+		            'primary' => '#fdf6e3', 
+		            'secondary' => '#dc322f'
+	            ),
+	            'solarized_red_dark'   => array(
+		            'primary' => '#dc322f', 
+		            'secondary' => '#fdf6e3'
 	            ),
 	            
             );
@@ -141,26 +154,48 @@ if(!class_exists('SoulSites_CC_Scripts')){
 		            'secondary' => 'Alegreya Sans, sans-serif', 
 		            'extra' => 'Alegreya Sans, sans-serif'
 	            ),
-	            'cormorant' => array(
-		            'primary' => 'Cormorant Garamond, serif', 
-		            'secondary' => 'Cormorant SC, serif', 
-		            'extra' => 'Cormorant SC, serif'
-	            ),
 	            'dm' => array(
 		            'primary' => 'DM Sans, serif', 
 		            'secondary' => 'DM Serif Display, serif', 
 		            'extra' => 'DM Serif Display, serif'
 	            ),
-	            'libre' => array(
-		            'primary' => 'Libre Baskerville, serif', 
-		            'secondary' => 'Libre Franklin, sans-serif', 
+	            'libre_franklin_libre_baskerville' => array(
+		            'primary' => 'Libre Franklin, serif', 
+		            'secondary' => 'Libre Baskerville, sans-serif', 
 		            'extra' => 'Libre Franklin, sans-serif'
 	            ),
-	            'roboto' => array(
+	            'merriweather_cabin' => array(
+		            'primary' => 'Merriweather, serif', 
+		            'secondary' => 'Cabin, sans-serif', 
+		            'extra' => 'Cabin, sans-serif'
+	            ),
+	            'proza_libre_cormorant_garamond' => array(
+		            'primary' => 'Proza Libre, sans-serif', 
+		            'secondary' => 'Cormorant Garamond, serif', 
+		            'extra' => 'Cormorant Garamond, serif'
+	            ),
+	            'roboto_roboto_slab' => array(
 		            'primary' => 'Roboto, sans-serif', 
 		            'secondary' => 'Roboto Slab, sans-serif', 
 		            'extra' => 'Roboto Slab, sans-serif'
 	            ),
+	            'source_sans_pro_playfair_display' => array(
+		            'primary' => 'Source Sans Pro, sans-serif', 
+		            'secondary' => 'Playfair Display, serif', 
+		            'extra' => 'Source Sans Pro, sans-serif'
+	            ),
+	            'titillum_web_dosis' => array(
+		            'primary' => 'Titillium Web, sans-serif', 
+		            'secondary' => 'Dosis, sans-serif', 
+		            'extra' => 'Titillium Web, sans-serif'
+	            ),
+	            'work_sans_taviraj' => array(
+		            'primary' => 'Taviraj, serif', 
+		            'secondary' => 'Work Sans, sans-serif', 
+		            'extra' => 'Work Sans, sans-serif'
+	            ),
+	            
+	            
 
             );
 
@@ -196,7 +231,7 @@ if(!class_exists('SoulSites_CC_Scripts')){
                 $primary    = 'cursive';
                 $secondary  = 'cursive';
                 $extra      = 'cursive';
-                
+
                 // if the user has selected the Primary font as the only one to display on the site
                 if('primary' === $exclusive_font_set){
                     // set the other font variables to the same as the Primary
