@@ -34,7 +34,11 @@ if(!class_exists('SoulSites_CC_Scripts')){
             'libre_franklin_libre_baskerville'   => 'https://fonts.googleapis.com/css?family=Libre+Baskerville:400,400i,700|Libre+Franklin:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i&display=swap',
             'merriweather_cabin'   => 'https://fonts.googleapis.com/css?family=Cabin|Merriweather:300,300i,400,400i,700,700i,900,900i&display=swap',
             'proza_libre_cormorant_garamond'   => 'https://fonts.googleapis.com/css?family=Cormorant+Garamond:300,300i,400,400i,500,500i,600,600i,700,700i|Proza+Libre:400,400i,500,500i,600,600i,700,700i,800,800i&display=swap',
-            'roboto'   => 'https://fonts.googleapis.com/css?family=Roboto+Slab:100,300,400,700|Roboto:100,100i,300,300i,400,400i,500,500i,700,700i,900,900i&display=swap'
+            'roboto_roboto_slab'   => 'https://fonts.googleapis.com/css?family=Roboto+Slab:100,300,400,700|Roboto:100,100i,300,300i,400,400i,500,500i,700,700i,900,900i&display=swap',
+            'proza_libre_cormorant_garamond'   => 'https://fonts.googleapis.com/css?family=Cormorant+Garamond:300,300i,400,400i,500,500i,600,600i,700,700i|Proza+Libre:400,400i,500,500i,600,600i,700,700i,800,800i&display=swap',
+            'source_sans_pro_playfair_display'   => 'https://fonts.googleapis.com/css?family=Playfair+Display:400,400i,700,700i,900,900i|Source+Sans+Pro:200,200i,300,300i,400,400i,600,600i,700,700i,900,900i&display=swap',
+            'titillum_web_dosis'   => 'https://fonts.googleapis.com/css?family=Dosis:200,300,400,500,600,700,800|Titillium+Web:200,200i,300,300i,400,400i,600,600i,700,700i,900&display=swap',
+            'work_sans_taviraj'   => 'https://fonts.googleapis.com/css?family=Taviraj:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i|Work+Sans:100,200,300,400,500,600,700,800,900&display=swap',
             );
 
             // get the user's selected font schema
@@ -167,11 +171,28 @@ if(!class_exists('SoulSites_CC_Scripts')){
 		            'secondary' => 'Cormorant Garamond, serif', 
 		            'extra' => 'Cormorant Garamond, serif'
 	            ),
-	            'roboto' => array(
+	            'roboto_roboto_slab' => array(
 		            'primary' => 'Roboto, sans-serif', 
 		            'secondary' => 'Roboto Slab, sans-serif', 
 		            'extra' => 'Roboto Slab, sans-serif'
 	            ),
+	            'source_sans_pro_playfair_display' => array(
+		            'primary' => 'Source Sans Pro, sans-serif', 
+		            'secondary' => 'Playfair Display, serif', 
+		            'extra' => 'Source Sans Pro, sans-serif'
+	            ),
+	            'titillum_web_dosis' => array(
+		            'primary' => 'Titillium Web, sans-serif', 
+		            'secondary' => 'Dosis, sans-serif', 
+		            'extra' => 'Titillium Web, sans-serif'
+	            ),
+	            'work_sans_taviraj' => array(
+		            'primary' => 'Taviraj, serif', 
+		            'secondary' => 'Work Sans, sans-serif', 
+		            'extra' => 'Work Sans, sans-serif'
+	            ),
+	            
+	            
 
             );
 

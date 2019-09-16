@@ -160,7 +160,10 @@ if(!class_exists('SoulSites_CC_Create_Customizer_Sections')){
                         'libre_franklin_libre_baskerville'      => __('Libre Franklin / Libre Baskerville', 'soulsites-cc'),
                         'merriweather_cabin'      => __('Merriweather / Cabin', 'soulsites-cc'),
                         'proza_libre_cormorant_garamond'   => __('Proza Libre / Cormorant Garamond', 'soulsites-cc'),
-                        'roboto'   => __('Roboto / Roboto Slab', 'soulsites-cc'),
+                        'roboto_roboto_slab'   => __('Roboto / Roboto Slab', 'soulsites-cc'),
+                        'source_sans_pro_playfair_display'   => __('Source Sans Pro / Playfair Display', 'soulsites-cc'),
+                        'titillum_web_dosis'   => __('Titillum Web / Dosis', 'soulsites-cc'),
+                        'work_sans_taviraj'   => __('Work Sans / Taviraj', 'soulsites-cc'),
                     ),
                 )
             );
